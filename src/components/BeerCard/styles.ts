@@ -3,10 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: space-between;
-  cursor: pointer;
+  justify-content: space-between;
+  cursor: move;
   width: 300px;
-  height: 400px;
+  height: 380px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 1px 1px;
   margin-right: 15px;
   margin-bottom: 15px;
@@ -57,4 +57,18 @@ export const ContainerImg = styled.div`
   }
 `;
 
-export const Footer = styled.div``;
+export const Footer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  .button-add {
+    margin-left: 1rem;
+  }
+`;
+
+export const ContainerDrag = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  svg {
+    position: relative;
+  }
+`;

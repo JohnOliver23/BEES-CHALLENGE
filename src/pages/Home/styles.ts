@@ -10,6 +10,12 @@ export const Container = styled.div`
 export const ContainerCenter = styled.div`
   width: 80%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
+  @media all and (max-width: 769px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
