@@ -17,7 +17,7 @@ const BeerCard: React.FC<BeerProps> = ({ beer }) => {
   return (
     <Container>
       <ContainerDrag>
-        <GrDrag size={20} color=" #cdcdcd" />
+        <GrDrag size={20} color="#cdcdcd" />
       </ContainerDrag>
 
       <div>

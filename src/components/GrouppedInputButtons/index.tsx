@@ -9,7 +9,6 @@ const GroupedInputButtons: React.FC<GroupedInputButtonsProps> = ({
   setValue,
 }) => {
   const handleIncrement = () => {
-    console.log(value);
     setValue(value + 1);
   };
 
