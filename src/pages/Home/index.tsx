@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { client } from '../../lib/prismic';
-import Prismic from 'prismic-javascript';
+import { getBeers } from '../../lib/prismic';
 import { arrayMove } from 'react-sortable-hoc';
 import { Document } from 'prismic-javascript/types/documents';
 import { BeerList } from '../../components/BeerList';
@@ -28,19 +27,18 @@ const Home: React.FC = () => {
   };
 
   useEffect(() => {
-    client()
-      .query([Prismic.Predicates.at('document.type', 'beers')])
-      .then(response => {
-        //sortering by product name
-        const sorteredBeers = response.results
-          .sort((a, b) => {
-            if (a.data.name[0].text < b.data.name[0].text) return -1;
-            if (a.data.name[0].text > b.data.name[0].text) return 1;
-            return 0;
-          })
-          .map(item => item);
-        setBeers(sorteredBeers);
-      });
+    getBeers().then(response => {
+      //sortering by product name
+      const sorteredBeers = response.results
+        .sort((a: Document, b: Document) => {
+          if (a.data.name[0].text < b.data.name[0].text) return -1;
+          if (a.data.name[0].text > b.data.name[0].text) return 1;
+          return 0;
+        })
+        .map((item: Document) => item);
+      setBeers(sorteredBeers);
+      console.log(response);
+    });
   }, []);
 
   // order beers whem choose on select

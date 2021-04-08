@@ -20,7 +20,7 @@ const Select: React.FC<InputProps> = ({
 
   return (
     <Container error={!!error} disabled={disabled}>
-      <select ref={inputRef} {...rest}>
+      <select data-testid="select" ref={inputRef} {...rest}>
         {list}{' '}
       </select>
     </Container>
