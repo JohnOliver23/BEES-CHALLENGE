@@ -31,7 +31,7 @@ describe('SignIn Page', () => {
     fireEvent.click(buttonMinus);
 
     await wait(() => {
-      expect(spyHandleDecrement).toHaveBeenCalled();
+      expect(spyHandleDecrement).toHaveBeenCalledWith(1);
     });
   });
 
@@ -45,7 +45,7 @@ describe('SignIn Page', () => {
     fireEvent.click(buttonPlus);
 
     await wait(() => {
-      expect(spyHandleIncrement).toHaveBeenCalled();
+      expect(spyHandleIncrement).toHaveBeenCalledWith(0);
     });
   });
 
@@ -59,7 +59,7 @@ describe('SignIn Page', () => {
     fireEvent.change(input, { target: { value: '1' } });
 
     await wait(() => {
-      expect(mockedSetValue).toHaveBeenCalled();
+      expect(mockedSetValue).toHaveBeenCalledWith(1);
     });
   });
 });
