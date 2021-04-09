@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, ButtonGroup, Button } from './styles';
+import { handleDecrement, handleIncrement } from '../../lib/functions';
 interface GroupedInputButtonsProps {
   value: number;
   setValue(value: number): void;
@@ -8,13 +9,6 @@ const GroupedInputButtons: React.FC<GroupedInputButtonsProps> = ({
   value,
   setValue,
 }) => {
-  const handleIncrement = () => {
-    setValue(value + 1);
-  };
-
-  const handleDecrement = () => {
-    setValue(value - 1);
-  };
   const isDisabled = value <= 0;
 
   return (
@@ -24,7 +18,7 @@ const GroupedInputButtons: React.FC<GroupedInputButtonsProps> = ({
           data-testid="button-minus"
           disabled={isDisabled}
           isMinus
-          onClick={handleDecrement}
+          onClick={() => setValue(handleDecrement(value))}
         >
           -
         </Button>
@@ -36,7 +30,10 @@ const GroupedInputButtons: React.FC<GroupedInputButtonsProps> = ({
           }}
           value={value}
         ></input>
-        <Button data-testid="button-plus" onClick={handleIncrement}>
+        <Button
+          data-testid="button-plus"
+          onClick={() => setValue(handleIncrement(value))}
+        >
           +
         </Button>
       </ButtonGroup>

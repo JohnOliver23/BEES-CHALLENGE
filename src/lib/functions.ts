@@ -25,3 +25,11 @@ export const getSorteredBeers = (beers: Document[], value: string) => {
     return sorteredBeers;
   }
 };
+
+export const handleIncrement = (value: number) => {
+  return value + 1;
+};
+
+export const handleDecrement = (value: number) => {
+  return value - 1;
+};
