@@ -3,7 +3,7 @@ import { render, wait, fireEvent } from '@testing-library/react';
 import Home from '../../pages/Home';
 import * as prismic from '../../lib/prismic';
 import '@testing-library/jest-dom';
-import { results } from '../../lib/util';
+import { resultsMock } from '../../lib/util';
 
 jest.mock('react-router-dom', () => {
   return {
@@ -14,10 +14,10 @@ jest.mock('react-router-dom', () => {
   };
 });
 
-describe('SignIn Page', () => {
+describe('Home Page', () => {
   it('should be able to render a list of beers in Home', async () => {
     const spy = jest.spyOn(prismic, 'getBeers');
-    spy.mockReturnValue(Promise.resolve(results));
+    spy.mockReturnValue(Promise.resolve(resultsMock));
     const { queryByText } = render(<Home />);
 
     await wait(() => {
@@ -27,7 +27,8 @@ describe('SignIn Page', () => {
 
   it('should be able to reorder a list when choose on select for lowest price', async () => {
     const spy = jest.spyOn(prismic, 'getBeers');
-    spy.mockReturnValue(Promise.resolve(results));
+    spy.mockReturnValue(Promise.resolve(resultsMock));
+
     const { getByTestId, queryByText } = render(<Home />);
     const select = getByTestId('select');
 
@@ -40,7 +41,7 @@ describe('SignIn Page', () => {
 
   it('should be able to reorder a list when choose on select for biggest price', async () => {
     const spy = jest.spyOn(prismic, 'getBeers');
-    spy.mockReturnValue(Promise.resolve(results));
+    spy.mockReturnValue(Promise.resolve(resultsMock));
     const { getByTestId, queryByText } = render(<Home />);
     const select = getByTestId('select');
 
@@ -53,7 +54,7 @@ describe('SignIn Page', () => {
 
   it('should be able to reorder a list when choose on select for Product Name', async () => {
     const spy = jest.spyOn(prismic, 'getBeers');
-    spy.mockReturnValue(Promise.resolve(results));
+    spy.mockReturnValue(Promise.resolve(resultsMock));
     const { getByTestId, queryByText } = render(<Home />);
     const select = getByTestId('select');
 

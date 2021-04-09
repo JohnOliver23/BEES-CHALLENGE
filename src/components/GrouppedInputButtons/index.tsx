@@ -20,17 +20,25 @@ const GroupedInputButtons: React.FC<GroupedInputButtonsProps> = ({
   return (
     <Container>
       <ButtonGroup>
-        <Button disabled={isDisabled} isMinus onClick={handleDecrement}>
+        <Button
+          data-testid="button-minus"
+          disabled={isDisabled}
+          isMinus
+          onClick={handleDecrement}
+        >
           -
         </Button>
         <input
           type="number"
+          data-testid="input"
           onChange={e => {
             setValue(parseInt(e.target.value));
           }}
           value={value}
         ></input>
-        <Button onClick={handleIncrement}>+</Button>
+        <Button data-testid="button-plus" onClick={handleIncrement}>
+          +
+        </Button>
       </ButtonGroup>
     </Container>
   );

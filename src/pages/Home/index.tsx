@@ -7,6 +7,7 @@ import { Container, ContainerCenter, ContainerSelect } from './styles';
 import { GrSort } from 'react-icons/gr';
 import Select from '../../components/Select';
 import { SortMethods } from '../../lib/util';
+import { getSorteredBeers } from '../../lib/functions';
 
 const Home: React.FC = () => {
   const [beers, setBeers] = useState<Document[]>([]);
@@ -37,36 +38,13 @@ const Home: React.FC = () => {
         })
         .map((item: Document) => item);
       setBeers(sorteredBeers);
-      console.log(response);
     });
   }, []);
 
   // order beers whem choose on select
   const handleChange = (value: string) => {
     setSortMethod(value);
-    if (value === 'Lowest Price') {
-      // order by lowest price
-      const sorteredBeers = beers
-        .sort((a, b) => a.data.price - b.data.price)
-        .map(item => item);
-      setBeers(sorteredBeers);
-    } else if (value === 'Biggest Price') {
-      //order by biggest price
-      const sorteredBeers = beers
-        .sort((a, b) => b.data.price - a.data.price)
-        .map(item => item);
-      setBeers(sorteredBeers);
-    } else {
-      // order by name
-      const sorteredBeers = beers
-        .sort((a, b) => {
-          if (a.data.name[0].text < b.data.name[0].text) return -1;
-          if (a.data.name[0].text > b.data.name[0].text) return 1;
-          return 0;
-        })
-        .map(item => item);
-      setBeers(sorteredBeers);
-    }
+    setBeers(getSorteredBeers(beers, value));
   };
 
   return (
